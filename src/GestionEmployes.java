@@ -18,6 +18,7 @@ public class GestionEmployes {
         String poste = scanner.nextLine();
         Employe newEmploye = new Employe(nom,salaire,poste);
         employees.add(newEmploye);
+        System.out.println("employé ajouté avec succès ✅");
     }
 
     //aafficher la liste
