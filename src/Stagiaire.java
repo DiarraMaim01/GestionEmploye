@@ -15,7 +15,7 @@ public class Stagiaire extends Employe{
 
     @Override
     public String toString() {
-        return "Nom : " +getNom() + "\nSalaire : " + getSalaire() + "\nPoste : " + getSalaire() + "\nDuree Stage : " + dureeStage;
+        return "Nom : " +getNom() + "\nSalaire : " + getSalaire() + "\nPoste : " + getPoste() + "\nDuree Stage : " + dureeStage;
     }
 
 

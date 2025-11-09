@@ -3,15 +3,23 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         GestionEmployes gestionEmployes = new GestionEmployes();
-        Scanner scanner = new Scanner(System.in);
-        int choix;
 
+        Scanner scanner = GestionEmployes.SC;
+
+        int choix =0 ;
         do {
             System.out.println("\n==== MENU ====");
             System.out.println("1. Liste des employés");
             System.out.println("2. Ajouter un employé");
-            System.out.println("3. Quitter");
+            System.out.println("3. Rechercher un employé");
+            System.out.println("4. Quitter");
             System.out.print("Votre choix : ");
+
+            if (!scanner.hasNextInt()) {
+                System.out.println("Entrée invalide. Tapez un chiffre (1-4).");
+                scanner.nextLine();
+                continue;
+            }
             choix = scanner.nextInt();
             scanner.nextLine();
 
@@ -22,41 +30,55 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("1)Employe 2) Manager 3) Stagiaire");
-                   int  decision = scanner.nextInt();
-                   Employe employe ;
+                    System.out.println("Type à ajouter : 1) Employé  2) Manager  3) Stagiaire");
+                    if (!scanner.hasNextInt()) {
+                        System.out.println("Entrée invalide.");
+                        scanner.nextLine();
+                        break;
+                    }
+                    int decision = scanner.nextInt();
                     scanner.nextLine();
 
+                    Employe employe;
                     switch (decision) {
                         case 1:
-                            System.out.println("==== Ajout d'un employé ====");
+                            System.out.println("==== Ajout d'un Employé ====");
                             employe = gestionEmployes.saisirEmploye();
                             gestionEmployes.AddEmploye(employe);
                             break;
                         case 2:
-                            System.out.println("==== Ajout d'un Manaher ====");
-                            employe =  gestionEmployes.saisirManager();
+                            System.out.println("==== Ajout d'un Manager ====");
+                            employe = gestionEmployes.saisirManager();
                             gestionEmployes.AddEmploye(employe);
                             break;
                         case 3:
-                            System.out.println("==== Ajout d'un stagiaire ====");
-                            employe =  gestionEmployes.saisirStagiaire();
+                            System.out.println("==== Ajout d'un Stagiaire ====");
+                            employe = gestionEmployes.saisirStagiaire();
                             gestionEmployes.AddEmploye(employe);
-                            break ;
+                            break;
                         default:
-                            System.out.println("Veuillez choisir un chiffre valide");
+                            System.out.println("Veuillez choisir 1, 2 ou 3.");
                     }
                     break;
 
                 case 3:
+                    System.out.println("==== Recherche employé ====");
+                    System.out.print("Saisissez le nom : ");
+                    String nom = scanner.nextLine();
+                    Employe result = gestionEmployes.chercherEmploye(nom);
+                    if (result != null) {
+                        System.out.println("Trouvé :\n" + result);
+                    }
+                    break;
+
+                case 4:
                     System.out.println("Fermeture du programme...");
                     break;
 
                 default:
                     System.out.println("Choix invalide, veuillez réessayer.");
             }
-        } while (choix != 3);
+        } while (choix != 4);
 
-        scanner.close();
     }
 }
