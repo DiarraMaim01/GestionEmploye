@@ -6,7 +6,13 @@ public class GestionEmployes {
 
 
     //ajouter un employé
-    public void AddEmploye (){
+    public void AddEmploye (Employe employe){
+        employees.add(employe);
+        System.out.println(" employé ajouté avec succès ✅✅");
+
+    }
+
+    public Employe saisirEmploye (){
         Scanner scanner = new Scanner(System.in);
         System.out.println(" Saisissez les informations du nouvel employé");
         System.out.println(" Entrez le nom");
@@ -16,12 +22,51 @@ public class GestionEmployes {
         scanner.nextLine();
         System.out.println(" Saisissez le poste");
         String poste = scanner.nextLine();
-        Employe newEmploye = new Employe(nom,salaire,poste);
-        employees.add(newEmploye);
-        System.out.println("employé ajouté avec succès ✅");
+
+        return new Employe(nom,salaire,poste);
     }
 
-    //aafficher la liste
+    public Manager saisirManager(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(" Saisissez les informations du nouveau manager");
+        System.out.println(" Entrez le nom");
+        String nom = scanner.nextLine();
+        System.out.println(" Saisissez le salaire");
+        double salaire = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println(" Saisissez le poste");
+        String poste = scanner.nextLine();
+
+        System.out.println(" Saisissez la prime");
+        double prime = scanner.nextDouble();
+        scanner.nextLine();
+
+        return new Manager(nom,salaire,poste,prime);
+
+    }
+
+    public Stagiaire saisirStagiaire(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(" Saisissez les informations du nouveau manager");
+        System.out.println(" Entrez le nom");
+        String nom = scanner.nextLine();
+        System.out.println(" Saisissez le salaire");
+        double salaire = scanner.nextDouble();
+        scanner.nextLine();
+        System.out.println(" Saisissez le poste");
+        String poste = scanner.nextLine();
+
+        System.out.println(" Saisissez la prime");
+        String dureeStage = scanner.nextLine();
+
+        return new Stagiaire(nom,salaire,poste,dureeStage);
+
+    }
+
+
+
+
+    //aafficher la liste d'employés
     public void DisplayEmployes() {
         if (employees.isEmpty()) {
             System.out.println("Pas encore d'employés");
@@ -31,5 +76,7 @@ public class GestionEmployes {
             }
         }
     }
+
+    //
 
 }

@@ -22,8 +22,30 @@ public class Main {
                     break;
 
                 case 2:
-                    System.out.println("==== Ajout d'un employé ====");
-                    gestionEmployes.AddEmploye();
+                    System.out.println("1)Employe 2) Manager 3) Stagiaire");
+                   int  decision = scanner.nextInt();
+                   Employe employe ;
+                    scanner.nextLine();
+
+                    switch (decision) {
+                        case 1:
+                            System.out.println("==== Ajout d'un employé ====");
+                            employe = gestionEmployes.saisirEmploye();
+                            gestionEmployes.AddEmploye(employe);
+                            break;
+                        case 2:
+                            System.out.println("==== Ajout d'un Manaher ====");
+                            employe =  gestionEmployes.saisirManager();
+                            gestionEmployes.AddEmploye(employe);
+                            break;
+                        case 3:
+                            System.out.println("==== Ajout d'un stagiaire ====");
+                            employe =  gestionEmployes.saisirStagiaire();
+                            gestionEmployes.AddEmploye(employe);
+                            break ;
+                        default:
+                            System.out.println("Veuillez choisir un chiffre valide");
+                    }
                     break;
 
                 case 3:
