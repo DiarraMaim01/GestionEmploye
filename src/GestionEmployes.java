@@ -8,7 +8,7 @@ public class GestionEmployes {
     public static final Scanner SC = new Scanner(System.in);
 
     //ajout d'employé
-    public void AddEmploye(Employe employe) {
+    public void addEmploye(Employe employe) {
         employees.add(employe);
         System.out.println("Employé ajouté avec succès ✅✅");
     }
@@ -74,7 +74,7 @@ public class GestionEmployes {
     }
 
     //  Affichage liste
-    public void DisplayEmployes() {
+    public void displayEmployes() {
         if (employees.isEmpty()) {
             System.out.println("Pas encore d'employés");
         } else {
@@ -94,5 +94,27 @@ public class GestionEmployes {
         }
         System.out.println("Aucun employé de ce nom");
         return null;
+    }
+
+    //supprimer un employé
+    public void supprimerEmploye(String nom) {
+        String cible = nom.trim();
+        Employe employee = chercherEmploye(cible);
+        if (employee != null) {
+            employees.remove(employee);
+            System.out.println("Employé supprimé avec succès ✅");
+        } else {
+            System.out.println("Aucune suppression (employé introuvable).");
+        }
+    }
+
+
+    //calcul masse salariale
+    public double calculMasseSalariale(){
+        double masse = 0;
+        for (Employe employe : employees) {
+            masse += employe.getSalaire();
+        }
+        return masse;
     }
 }
